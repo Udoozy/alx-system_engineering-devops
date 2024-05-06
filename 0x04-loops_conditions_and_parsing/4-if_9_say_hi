@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#This script print hi at the 9th position
+
+counter=0
+while [ $counter -lt 10 ]
+do
+	if [ $counter == 9 ]
+	then
+		echo "Hi"
+	fi
+	echo "Best School"
+	: $((counter++))
+done
