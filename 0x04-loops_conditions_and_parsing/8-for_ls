@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #This script prints the non number part of a directory
 
 my_files=$(find -- * -maxdepth 1 | cut -d'-' -f2-)
