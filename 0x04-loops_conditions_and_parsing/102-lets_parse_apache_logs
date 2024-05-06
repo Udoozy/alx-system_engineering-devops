@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#This script is about apeche server
+
+file="apache-access.log"
+
+awk '{print $1 " " $9}' $file
