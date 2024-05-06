@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#This script list formated file in current directed
 
 file=school
 
