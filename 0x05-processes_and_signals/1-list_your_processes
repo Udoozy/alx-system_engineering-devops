@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This script print a list currently running PID
+
+ps axuf
