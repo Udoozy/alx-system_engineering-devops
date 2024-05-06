@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+#This script prints the non number part of a directory
+
+my_files=$(find -- * -maxdepth 1 | cut -d'-' -f2-)
+
+for i in $my_files
+do
+	echo $i
+done
