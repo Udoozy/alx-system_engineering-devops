@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#This script use loop and condtion to determine what to print
+
+counter=0
+while [ $counter -lt 10 ]
+do
+	: $((counter++))
+	if [ $counter == 4 ]
+	then
+		echo "bad luck"
+	elif [ $counter == 8 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+done
