@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#This script configure an ubuntu server
+
+cp /etc/hosts ~/hosts.new
+sed -i s/127.0.0.1/127.0.0.2/ ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
+echo "8.8.8.8 facebook.com" >> ~/hosts.new
+cat ~/hosts.new > /etc/hosts
