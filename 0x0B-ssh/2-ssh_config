@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Login through authentcating with school and not pwa
+Host * 
+    IdentityFile ~/.ssh/school
