@@ -2,7 +2,6 @@
 # configuring Nginx server
 
 sudo apt-get -y update
-sudo apt-get -y upgrade
 sudo apt-get -y install nginx
-echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo service nginx restart
+echo "Hello Worldi!" > /var/www/html/index.html
+nginx -s reload
