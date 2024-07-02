@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Configuring error 404
+apt-get -y update
+apt-get -y install nginx
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+
+NGINX_CONF='/etc/nginx/sites-available/default'
+cp $NGINX_CONF ${NGINX_CONF}.bak
+sed -i '/server_name _;/a \\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\tinternal;\n\t}' $NGINX_CONF
+
+nginx -s reload
