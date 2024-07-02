@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Stating apache2 to print
+#Holberton school
+service apache2 start
