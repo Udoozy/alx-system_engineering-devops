@@ -10,10 +10,8 @@ sudo service nginx start
 sudo ufw allow 'Nginx HTTP'
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+cp /var/www/html/index.nginx.html /var/www/html/index.nginx.html.bckp
 
-echo "Hello World!" | sudo dd status=none of=/var/www/html/index.nginx-debian.html
+echo "Hello World!" | sudo dd status=none of=/var/www/html/index.nginx.html
 
 sudo service nginx restart
-
-echo "Insallation Completed."
