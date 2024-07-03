@@ -2,8 +2,9 @@
 # Conguring ubuntu for redrection
 
 echo "Please wait Nginx is being installed"
-sudo apt-get update -y -qq && \
-    sudo apt-get install nginx -y
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
 
 echo "We are almost done..."
 

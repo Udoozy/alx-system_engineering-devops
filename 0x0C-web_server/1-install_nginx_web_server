@@ -2,8 +2,10 @@
 # Configuring ubuntu to instal nginx
 
 echo "installing Nginx, please wait...."
-sudo apt-get update -y -qq && \
-    sudo apt-get install nginx -y
+
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
 
 echo "we are almost done, do not interupt"
 sudo service nginx start
