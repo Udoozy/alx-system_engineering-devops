@@ -8,10 +8,10 @@ echo "Hello World!" > /var/www/html/index.html
 
 REDIRECT='\\trewrite ^/redirect_me https://github.com/Udoozy permanent;'
 filePath='/etc/nginx/sites-available/default'
-sed -i '20i\\t#Permanent redirects' $filePath
-sed -i '21i\\t#' $filePath
-sed -i "22i $REDIRECT" $filePath
-sed -i '23i \\t' $filePath
+sed -i '30i\\t#Permanent redirects' $filePath
+sed -i '31i\\t#' $filePath
+sed -i "32i $REDIRECT" $filePath
+sed -i '33i \\t' $filePath
 
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
@@ -19,9 +19,9 @@ sed -i '/server_name _/a error_page 404 /404.html; location = /404.html {root /v
 
 HEADER_HOSTNAME='\\t add_header X-Served-By'
 
-sed -i '24i\\t#HTTP HEADER CONFIGURATION' $filePath
-sed -i '25i\\t#' $filePath
-sed -i "26i $HEADER_HOSTNAME ${HOSTNAME};" $filePath
-sed -i '27i \\t' $filePath
+sed -i '34i\\t#HTTP HEADER CONFIGURATION' $filePath
+sed -i '35i\\t#' $filePath
+sed -i "36i $HEADER_HOSTNAME ${HOSTNAME};" $filePath
+sed -i '37i \\t' $filePath
 
 service nginx restart
