@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Installing of HAPROXY
+
+apt-get update
+apt-get -y install haproxy
+
+cat <<EOM >> /etc/haproxy/haproxy.cfg
+
+frontend 345503-lb-01
+    bind *:80
+    mode http
+    option forwardfor
+    default_backend servers
+
+backend servers
+    balance roundrobin
+    server web-01 54.145.156.219
+    server web-02 18.233.67.185
+
+EOM
+
+sudo service haproxy start
