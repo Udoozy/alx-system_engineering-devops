@@ -12,6 +12,7 @@ exec {'install Nginx':
   before   => Exec['add_header'],
 }
 
+# Adding the header
 exec { 'add_header':
   provider    => shell,
   environment => ["HOST=${hostname}"],
