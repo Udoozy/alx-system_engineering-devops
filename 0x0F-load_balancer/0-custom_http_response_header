@@ -1,27 +1,15 @@
 #!/usr/bin/env bash
 # Configuring server web-01 and web-0 to handle load balancing
+host_var=$(hostname)
+err_page="error_page 404 \/custom_404.html;\n location \/redirect_me {\n return 301 \$scheme:\/\/www.google.com;"
+header_page="server {\n\tadd_header X-Served-By $host_var;"
 
-apt-get -y update
-apt-get -y upgrade
-apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.html
+apt-get update -y
+apt-get install nginx -y
+echo "Hello World!" > /usr/share/nginx/html/index.html
+mkdir -p /var/www/html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sudo sed -i -E "s/^[^#]+location \/ \{/$err_page/" /etc/nginx/sites-available/default
+sudo sed -i -E "s/^server \{/$header_page/" /etc/nginx/sites-available/default
 
-REDIRECT='\\trewrite ^/redirect_me https://github.com/Udoozy permanent;'
-filePath='/etc/nginx/sites-available/default'
-sed -i '30i\\t#Permanent redirects' $filePath
-sed -i '31i\\t#' $filePath
-sed -i "32i $REDIRECT" $filePath
-sed -i '33i \\t' $filePath
-
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-
-sed -i '/server_name _/a error_page 404 /404.html; location = /404.html {root /var/www/html/; internal; }' $filePath
-
-HEADER_HOSTNAME='\\t add_header X-Served-By'
-
-sed -i '34i\\t#HTTP HEADER CONFIGURATION' $filePath
-sed -i '35i\\t#' $filePath
-sed -i "36i $HEADER_HOSTNAME ${HOSTNAME};" $filePath
-sed -i '37i \\t' $filePath
-
-service nginx restart
+sudo service nginx start
