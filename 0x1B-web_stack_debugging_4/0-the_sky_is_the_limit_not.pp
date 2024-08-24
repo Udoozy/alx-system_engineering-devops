@@ -1,12 +1,6 @@
 # resolving our web server trafic on presure
 
-exec {'replace':
-  source  => shell,
-  command => 'sudo sed -i "s/ULIMIT=\"-n 15\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
-  before  => Exec['restart'],
-}
-
-exec {'restart':
-  source  => shell,
-  command => 'sudo service nginx restart',
+exec { 'limit_replace':
+  command => 'sed -i "s/15/5000/" /etc/default/nginx && sudo service nginx restart',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games',
 }
