@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #This script is about apeche server
 
-awk '{print NR " " $1 " " $9}' apache-access.log
+awk '{print FNR " " $1 " " $9}' apache-access.log
