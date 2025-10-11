@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#This kills the process 7-highlander
+
+pid=$(pgrep -f 7-highlander)
+
+if [ -n "$pid" ]; then
+    kill -9 "$pid"
+else
+    echo "No process found for 7-highlander"
+fi
